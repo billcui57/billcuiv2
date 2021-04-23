@@ -81,7 +81,7 @@ function App() {
       finalScreen =
         [
           ...finalScreen,
-          currDir.subdirectories?.map((subDir: Directory) => { return <ConsoleLine className="mx-4 inline-block "><div className="text-green-400">{"/" + subDir.name}</div></ConsoleLine> })
+          currDir.subdirectories?.map((subDir: Directory) => { return <ConsoleLine className="mr-4 inline-block "><div className="text-green-400">{"/" + subDir.name}</div></ConsoleLine> })
         ]
 
     } 
