@@ -1,148 +1,43 @@
 import React, { FC, ReactComponentElement, useEffect, useState } from 'react';
-import logo from './logo.svg';
 import './App.css';
-import ConsoleLine from './components/ConsoleLine/ConsoleLine'
-import ConsoleInput from './components/ConsoleInput/ConsoleInput';
-import { Directory, getRootDir } from './models/directory';
-
+import Console from './components/Console/Console'
+import Me from './assets/me.jpg'
 
 
 function App() {
 
-  let [userInput, setUserInput] = useState<String>();
 
 
-  const initialScreen = [
-    <ConsoleLine><div className="text-red-400 inline">💻 Welcome to ✨Bill Cui’s Website✨ LTS (GNU/Linux 4.19.104-microsoft-standard x86_64) 💻</div></ConsoleLine>,
-    <ConsoleLine className="mx-4 mt-5"><div className="text-yellow-400 inline">* Documentation:</div>  Bill’s Resume</ConsoleLine>,
-    <ConsoleLine className="mx-4"><div className="text-yellow-400 inline">* Management:</div>     https://github.com/billcui57</ConsoleLine>,
-    <ConsoleLine className="mx-4"><div className="text-yellow-400 inline">* Support:</div>        https://linkedin.com/in/billcui57</ConsoleLine>,
-    <ConsoleLine className="mx-4"><div className="text-yellow-400 inline">* Contact:</div>        billcui2001@hotmail.com</ConsoleLine>,
-    <ConsoleLine className="mx-4 mt-5">System information as of <div className="text-green-400 inline">{new Date().toString()}</div></ConsoleLine>,
-    <ConsoleLine className="mx-4"><div className="text-yellow-400 inline">Education Status: </div> University of Waterloo Computer Science 2B</ConsoleLine>,
-    <ConsoleLine className="mt-5">This message is shown once a visit.</ConsoleLine>,
-    <ConsoleLine>Type <div className="text-green-400 inline">help</div> for list of navigation commands</ConsoleLine>
-  ]
+  const [mode, setMode] = useState<string | undefined>(undefined)
 
 
-  const help = [
-    <ConsoleLine className="mx-4"><div className="text-green-400 inline">* ls:</div> list navigation directory</ConsoleLine>,
-    <ConsoleLine className="mx-4"><div className="text-green-400 inline">* cd:</div> change navigation directory</ConsoleLine>,
-    <ConsoleLine className="mx-4"><div className="text-green-400 inline">* cat:</div> view a file in navigation directory</ConsoleLine>,
-    <ConsoleLine className="mx-4"><div className="text-green-400 inline">* clear:</div> clear terminal screen</ConsoleLine>,
-  ]
+  const displayStartingScreen = () => {
+    return (
+      <div>
+        <div className="animate-profile-fade-in">
+          <img src={Me} className="w-1/3 rounded-full mx-auto mt-10"></img>
+          <h1 className=" text-console-white text-center text-4xl mt-4">Hi, I'm Bill Cui.</h1>
+        </div>
 
-  let [screen, setScreen] = useState<any[]>(initialScreen);
-
-
-  let [currDir, setCurrDir] = useState<Directory>(
-    () => getRootDir()
-  );
-
-
-
-    useEffect(() => {
-      const element = document.getElementById("bottom");
-      element?.scrollIntoView({behavior: 'smooth'})
-    })
-  
-
-
-
-
-  const handlePressedEnter = () => {
-
-
-    let finalScreen: any[];
-
-    finalScreen = [...screen, <ConsoleLine ><div className="text-pink-500 inline">{"/" + currDir.name}&gt;</div> {userInput}</ConsoleLine>];
-    setUserInput("");
-
-
-    //empty command with only whitespaces
-    if (userInput?.length === 0 || !userInput?.trim()) {
-      //do nothing
-
-    } 
-    //help
-    else if (userInput == "help") {
-      finalScreen =
-        [
-          ...finalScreen,
-          help
-        ]
-    } 
-    //clear
-    else if (userInput === "clear") {
-      finalScreen = [];
-    } 
-    //ls
-    else if (userInput === "ls") {
-      finalScreen =
-        [
-          ...finalScreen,
-          currDir.subdirectories?.map((subDir: Directory) => { return <ConsoleLine className="mr-4 inline-block "><div className="text-green-400">{"/" + subDir.name}</div></ConsoleLine> })
-        ]
-
-    } 
-    //cd
-    else if ((userInput.split(" ")) && (userInput.split(" ")[0] == "cd")) {
-      let requestedDirectory = userInput.split(" ")[1];
-
-
-      //root
-      if (requestedDirectory == "..") {
-        let prevDir = currDir.parent;
-        if (prevDir) {
-          setCurrDir(prevDir);
-        } else {
-          finalScreen =
-            [
-              ...finalScreen,
-              <ConsoleLine ><div className="text-red-400 inline">Root directory does not have a parent directory</div></ConsoleLine>,
-            ]
-        }
-      }
-      //elsewhere
-      else {
-        let cand = currDir.subdirectories?.find((dir) => ((dir.name === requestedDirectory) || (("/" + dir.name) === requestedDirectory)));
-        if (cand) {
-          setCurrDir(cand)
-        } else {
-          finalScreen =
-            [
-              ...finalScreen,
-              <ConsoleLine ><div className="text-red-400 inline">Directory name does not exist, type <div className="text-green-400 inline">ls</div> for list of directories</div></ConsoleLine>,
-            ]
-        }
-      }
-    }
-    //invalid command
-    else {
-      finalScreen =
-        [
-          ...finalScreen,
-          <ConsoleLine ><div className="text-red-400 inline">Invalid command, type <div className="text-green-400 inline">help</div> for list of navigation commands</div></ConsoleLine>,
-        ]
-    }
-
-
-    finalScreen = [
-      ...finalScreen,
-      <div id="bottom" > </div>,
-    ]
-    setScreen(finalScreen);
-    
-
-
+        <div className="flex justify-center mt-5">
+          <input type="button" className="animate-pulse bg-gray-400 rounded-full p-3 mx-2 hover:bg-pink-600 hover:text-white cursor-pointer duration-300 ease-in-out" value="View in Terminal Mode" onClick={() => setMode("terminal")}></input>
+          <input type="button" className="animate-pulse bg-gray-400 rounded-full p-3 mx-2 hover:bg-pink-600 hover:text-white cursor-pointer duration-300 ease-in-out" value="View in Regular Mode"></input>
+        </div>
+      </div>
+    )
   }
 
 
 
   return (
     <div className="font-console">
-      {screen}
-      <ConsoleInput setUserInput={setUserInput} handlePressedEnter={handlePressedEnter} userInput={userInput} currDir={currDir.name} ></ConsoleInput>
+
+
+
+      {mode ? (mode === "terminal" ? <Console></Console> : <Console></Console>) : displayStartingScreen()}
+
+
+
     </div>
   );
 }
