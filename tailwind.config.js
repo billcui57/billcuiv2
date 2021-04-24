@@ -8,14 +8,14 @@ module.exports = {
         'console-white': "#BBBFC4"
       },
       keyframes: {
-        'button-fade-in': {
+        'profile-fade-out': {
             '0%': {
-                opacity: '0',
-                transform: 'translateY(-10px)'
-            },
-            '100%': {
                 opacity: '1',
                 transform: 'translateY(0)'
+            },
+            '100%': {
+                opacity: '0',
+                transform: 'translateY(-10px)'
             },
         },
        
@@ -32,7 +32,7 @@ module.exports = {
     },
     animation: {
         'profile-fade-in': 'profile-fade-in 0.5s ease-out',
-        'button-fade-in': 'button-fade-in 2s ease-in',
+        'profile-fade-out': 'profile-fade-out 1s ease-in',
     }
     },
     fontFamily: {

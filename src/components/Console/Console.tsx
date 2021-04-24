@@ -2,7 +2,8 @@ import React, { FC, ReactComponentElement, useEffect, useState } from 'react';
 import './Console.css';
 import ConsoleLine from '../../components/ConsoleLine/ConsoleLine'
 import ConsoleInput from '../../components/ConsoleInput/ConsoleInput';
-import { Directory, getRootDir } from '../../models/directory';
+import { Directory, initializeDir, File } from '../../models/directory';
+
 
 
 function Console() {
@@ -34,7 +35,7 @@ function Console() {
 
 
   let [currDir, setCurrDir] = useState<Directory>(
-    () => getRootDir()
+    () => initializeDir()
   );
 
 
@@ -45,7 +46,7 @@ function Console() {
   })
 
 
-
+console.log(currDir.files)
 
 
   const handlePressedEnter = () => {
@@ -79,7 +80,8 @@ function Console() {
       finalScreen =
         [
           ...finalScreen,
-          currDir.subdirectories?.map((subDir: Directory) => { return <ConsoleLine className="mr-4 inline-block "><div className="text-green-400">{"/" + subDir.name}</div></ConsoleLine> })
+          currDir.subdirectories?.map((subDir: Directory) => { return <ConsoleLine className="mr-4 inline-block "><div className="text-green-400">{"/" + subDir.name}</div></ConsoleLine> }),
+          currDir.files?.map((file: File) => { return <ConsoleLine className="mr-4 inline-block "><div className="text-green-400">{file.name}</div></ConsoleLine> })
         ]
 
     }
@@ -89,7 +91,7 @@ function Console() {
 
 
       //root
-      if (requestedDirectory == "..") {
+      if (requestedDirectory === "..") {
         let prevDir = currDir.parent;
         if (prevDir) {
           setCurrDir(prevDir);
@@ -113,6 +115,23 @@ function Console() {
               <ConsoleLine ><div className="text-red-400 inline">Directory name does not exist, type <div className="text-green-400 inline">ls</div> for list of directories</div></ConsoleLine>,
             ]
         }
+      }
+    }
+    //cat 
+    else if((userInput.split(" ")) && (userInput.split(" ")[0] == "cat")){
+      let requestedFile = userInput.split(" ")[1];
+      let cand = currDir.files?.find((file) => (file.name === requestedFile));
+      if(cand){
+        finalScreen = [
+          ...finalScreen,
+          cand.display
+        ]
+      }else{
+        finalScreen =
+            [
+              ...finalScreen,
+              <ConsoleLine ><div className="text-red-400 inline">File name does not exist, type <div className="text-green-400 inline">ls</div> for list of files</div></ConsoleLine>,
+            ]
       }
     }
     //invalid command

@@ -1,9 +1,10 @@
+import mathsoclib from "./projects/mathsoclib";
 
 
 
 export interface File {
   name: string;
-  url: string;
+  display: any; //component
 }
 
 
@@ -30,16 +31,21 @@ export class Directory {
 
 
 
-export function getRootDir() {
+export function initializeDir() //returns rootDir
+{
   let rootDir = new Directory(
     ""
   )
 
+ 
 
   let projDir = new Directory(
     "projects",
     rootDir,
-    
+    undefined,
+    [
+      mathsoclib
+    ]
   )
 
   let hackathons = new Directory(
