@@ -206,6 +206,8 @@ function Console() {
 
 
 
+
+
   return (
     <div className="animate-profile-fade-in">
       {screen}

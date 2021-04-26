@@ -11,7 +11,7 @@ let mathsoclib: File = {
 }
 
 let bereavement: File = {
-  name: "Bereavement",
+  name: "BereavementDNN",
   display: <Bereavements></Bereavements>
 }
 

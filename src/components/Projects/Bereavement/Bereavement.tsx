@@ -13,7 +13,7 @@ function Bereavements() {
       <ConsoleLine className="mb-2">
         <div className="flex justify-center items-center">
           <img src={MathSocLogo} className="w-16"></img>
-          <h1 className="text-4xl text-red-400 p-2 ">Mathsoc Textbook Library</h1>
+          <h1 className="text-4xl text-red-400 p-2 ">Bereavement DotNetNuke Module</h1>
           <img src={MathSocLogo} className="w-16"></img>
         </div>
       </ConsoleLine>
