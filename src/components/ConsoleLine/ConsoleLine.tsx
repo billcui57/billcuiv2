@@ -3,16 +3,16 @@ import './ConsoleLine.css';
 
 
 interface ConsoleLineProps {
-  children : any,
-  className? : any
+  children: any,
+  className?: any
 }
 
 
-function ConsoleLine({ children, className}: ConsoleLineProps) {
+function ConsoleLine({ children, className }: ConsoleLineProps) {
   return (
-    <div className = {`px-1 pt-1 ${className}`}>
+    <div className={`px-1 py-0.5 text-2xl text-console-white ${className}`}>
 
-        <p className={`text-2xl text-console-white`}> {children}</p>
+      {children}
 
 
     </div>

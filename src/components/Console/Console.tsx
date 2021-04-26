@@ -46,7 +46,34 @@ function Console() {
   })
 
 
-console.log(currDir.files)
+  //autocompletee
+  const handlePressedTab = () => {
+    //empty command with only whitespaces
+    if (userInput?.length === 0 || !userInput?.trim()) {
+      //do nothing
+
+    } else if ((userInput.split(" ")) && (userInput.split(" ")[0] === "cd")) {
+      let incompleteDir = userInput.split(" ")[1];
+
+      if (incompleteDir) {
+
+        let cand = currDir.subdirectories?.find((dir) => (dir.name.includes(incompleteDir)));
+        if (cand) {
+          setUserInput(userInput.replace(incompleteDir, cand.name));
+        }
+      }
+    } else if ((userInput.split(" ")) && (userInput.split(" ")[0] === "cat")) {
+      let incompleteFile = userInput.split(" ")[1];
+
+      if (incompleteFile) {
+
+        let cand = currDir.files?.find((file) => (file.name.includes(incompleteFile)));
+        if (cand) {
+          setUserInput(userInput.replace(incompleteFile, cand.name));
+        }
+      }
+    }
+  }
 
 
   const handlePressedEnter = () => {
@@ -64,7 +91,7 @@ console.log(currDir.files)
 
     }
     //help
-    else if (userInput == "help") {
+    else if (userInput === "help") {
       finalScreen =
         [
           ...finalScreen,
@@ -81,58 +108,81 @@ console.log(currDir.files)
         [
           ...finalScreen,
           currDir.subdirectories?.map((subDir: Directory) => { return <ConsoleLine className="mr-4 inline-block "><div className="text-green-400">{"/" + subDir.name}</div></ConsoleLine> }),
-          currDir.files?.map((file: File) => { return <ConsoleLine className="mr-4 inline-block "><div className="text-green-400">{file.name}</div></ConsoleLine> })
+          currDir.files?.map((file: File) => { return <ConsoleLine className="mr-4 inline-block"><div className="text-blue-400">{file.name}</div></ConsoleLine> })
         ]
 
     }
     //cd
-    else if ((userInput.split(" ")) && (userInput.split(" ")[0] == "cd")) {
-      let requestedDirectory = userInput.split(" ")[1];
+    else if ((userInput.split(" ")) && (userInput.split(" ")[0] === "cd")) {
 
 
-      //root
-      if (requestedDirectory === "..") {
-        let prevDir = currDir.parent;
-        if (prevDir) {
-          setCurrDir(prevDir);
-        } else {
-          finalScreen =
-            [
-              ...finalScreen,
-              <ConsoleLine ><div className="text-red-400 inline">Root directory does not have a parent directory</div></ConsoleLine>,
-            ]
+      if (userInput.split(" ").length !== 2) {
+        finalScreen =
+          [
+            ...finalScreen,
+            <ConsoleLine ><div className="text-red-400 inline">Too many arguments</div></ConsoleLine>,
+          ]
+      } else {
+        let requestedDirectory = userInput.split(" ")[1];
+
+        //root
+        if (requestedDirectory === "..") {
+          let prevDir = currDir.parent;
+          if (prevDir) {
+            setCurrDir(prevDir);
+          } else {
+            finalScreen =
+              [
+                ...finalScreen,
+                <ConsoleLine ><div className="text-red-400 inline">Root directory does not have a parent directory</div></ConsoleLine>,
+              ]
+          }
+        }
+        //elsewhere
+        else {
+          let cand = currDir.subdirectories?.find((dir) => ((dir.name === requestedDirectory) || (("/" + dir.name) === requestedDirectory)));
+          if (cand) {
+            setCurrDir(cand)
+          } else {
+            finalScreen =
+              [
+                ...finalScreen,
+                <ConsoleLine ><div className="text-red-400 inline">Directory name does not exist, type <div className="text-green-400 inline">ls</div> for list of directories</div></ConsoleLine>,
+              ]
+          }
         }
       }
-      //elsewhere
-      else {
-        let cand = currDir.subdirectories?.find((dir) => ((dir.name === requestedDirectory) || (("/" + dir.name) === requestedDirectory)));
-        if (cand) {
-          setCurrDir(cand)
-        } else {
-          finalScreen =
-            [
-              ...finalScreen,
-              <ConsoleLine ><div className="text-red-400 inline">Directory name does not exist, type <div className="text-green-400 inline">ls</div> for list of directories</div></ConsoleLine>,
-            ]
-        }
-      }
+
+
     }
     //cat 
-    else if((userInput.split(" ")) && (userInput.split(" ")[0] == "cat")){
-      let requestedFile = userInput.split(" ")[1];
-      let cand = currDir.files?.find((file) => (file.name === requestedFile));
-      if(cand){
-        finalScreen = [
-          ...finalScreen,
-          cand.display
-        ]
-      }else{
+    else if ((userInput.split(" ")) && (userInput.split(" ")[0] === "cat")) {
+
+      if (userInput.split(" ").length !== 2) {
         finalScreen =
+          [
+            ...finalScreen,
+            <ConsoleLine ><div className="text-red-400 inline">Too many arguments</div></ConsoleLine>,
+          ]
+      } else {
+        let requestedFile = userInput.split(" ")[1];
+        let cand = currDir.files?.find((file) => (file.name === requestedFile));
+        if (cand) {
+          finalScreen = [
+            ...finalScreen,
+            cand.display
+          ]
+        } else {
+          finalScreen =
             [
               ...finalScreen,
               <ConsoleLine ><div className="text-red-400 inline">File name does not exist, type <div className="text-green-400 inline">ls</div> for list of files</div></ConsoleLine>,
             ]
+        }
       }
+
+
+
     }
     //invalid command
     else {
@@ -157,9 +207,9 @@ console.log(currDir.files)
 
 
   return (
-    <div className = "animate-profile-fade-in">
+    <div className="animate-profile-fade-in">
       {screen}
-      <ConsoleInput setUserInput={setUserInput} handlePressedEnter={handlePressedEnter} userInput={userInput} currDir={currDir.name} ></ConsoleInput>
+      <ConsoleInput setUserInput={setUserInput} handlePressedEnter={handlePressedEnter} userInput={userInput} currDir={currDir.name} handlePressedTab={handlePressedTab} ></ConsoleInput>
     </div>
   );
 }

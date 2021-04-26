@@ -1,7 +1,7 @@
 import React, { FormEvent, SyntheticEvent } from 'react';
 import './ConsoleInput.css';
 
-function ConsoleInput({ setUserInput, userInput,  handlePressedEnter, currDir}: {setUserInput: any, handlePressedEnter:any, userInput:any, currDir: string}) {
+function ConsoleInput({ setUserInput, userInput,  handlePressedEnter, currDir, handlePressedTab}: {setUserInput: any, handlePressedEnter:any, userInput:any, currDir: string, handlePressedTab:any}) {
 
 
   const handleUserTyping = (event:SyntheticEvent ) => {
@@ -15,6 +15,10 @@ function ConsoleInput({ setUserInput, userInput,  handlePressedEnter, currDir}: 
   const handleUserKeyDown = (event: any) => {
     if(event.key === 'Enter'){
       handlePressedEnter();
+    }else if (event.key === "Tab"){
+      event.preventDefault()
+      //auto complete
+      handlePressedTab();
     }
   }
 

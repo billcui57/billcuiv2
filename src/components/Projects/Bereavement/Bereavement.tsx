@@ -1,7 +1,7 @@
 import ConsoleLine from "../../ConsoleLine/ConsoleLine";
 import MathSocLogo from '../../../assets/mathSocLogo.png';
 
-function MathSocLib() {
+function Bereavements() {
 
 
 
@@ -37,4 +37,4 @@ function MathSocLib() {
   );
 }
 
-export default MathSocLib;
+export default Bereavements;

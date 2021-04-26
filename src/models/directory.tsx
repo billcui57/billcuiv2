@@ -1,4 +1,4 @@
-import mathsoclib from "./projects/mathsoclib";
+import {mathsoclib, bereavement} from '../models/projects'
 
 
 
@@ -44,7 +44,8 @@ export function initializeDir() //returns rootDir
     rootDir,
     undefined,
     [
-      mathsoclib
+      mathsoclib,
+      bereavement
     ]
   )
 
