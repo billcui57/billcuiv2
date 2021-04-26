@@ -41,7 +41,7 @@ function Console() {
 
 
   useEffect(() => {
-    const element = document.getElementById("bottom");
+    const element = document.getElementById(`bottom${screen.length}`);
     element?.scrollIntoView({ behavior: 'smooth' })
   })
 
@@ -196,7 +196,7 @@ function Console() {
 
     finalScreen = [
       ...finalScreen,
-      <div id="bottom" > </div>,
+      <div id={`bottom${finalScreen.length + 1}`} > </div>,
     ]
     setScreen(finalScreen);
 
@@ -209,7 +209,7 @@ function Console() {
 
 
   return (
-    <div className="animate-profile-fade-in">
+    <div className="animate-profile-fade-in" >
       {screen}
       <ConsoleInput setUserInput={setUserInput} handlePressedEnter={handlePressedEnter} userInput={userInput} currDir={currDir.name} handlePressedTab={handlePressedTab} ></ConsoleInput>
     </div>
