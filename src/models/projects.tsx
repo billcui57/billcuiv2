@@ -1,5 +1,6 @@
 import Bereavements from "../components/Projects/Bereavement/Bereavement";
 import MathSocLib from "../components/Projects/MathSocLib/MathSocLib";
+import ToTheMoon from "../components/Projects/ToTheMoon/ToTheMoon";
 import { File } from "./directory";
 
 
@@ -15,4 +16,9 @@ let bereavement: File = {
   display: <Bereavements></Bereavements>
 }
 
-export {mathsoclib, bereavement};
+let toTheMoon: File = {
+  name: "ToTheMoon",
+  display: <ToTheMoon></ToTheMoon>
+}
+
+export {mathsoclib, bereavement, toTheMoon};

@@ -8,7 +8,7 @@ function Bereavements() {
 
 
   return (
-    <div className="font-console text-center px-4">
+    <div className="font-console text-center px-4 py-4">
 
       <ConsoleLine className="mb-2">
         <div className="flex justify-center items-center">
@@ -24,7 +24,7 @@ function Bereavements() {
         <p className="p-1 text-yellow-400">DotNetNuke</p>
         <p className="p-1 text-yellow-400">SQLSever</p>
       </ConsoleLine>
-      <ConsoleLine className = "mb-2 "><p>A fullstack employment bereavement DotNetNuke CMS module for the Toronto District School Board </p></ConsoleLine>
+      <ConsoleLine className = "mb-4 "><p>A fullstack employment bereavement DotNetNuke CMS module for the Toronto District School Board </p></ConsoleLine>
 
       
 

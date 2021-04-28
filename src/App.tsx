@@ -2,6 +2,7 @@ import React, { FC, ReactComponentElement, useEffect, useState } from 'react';
 import './App.css';
 import Console from './components/Console/Console'
 import Me from './assets/me.jpg'
+import Typewriter from 'typewriter-effect'
 
 
 function App() {
@@ -22,7 +23,49 @@ function App() {
       <div>
         <div>
           <img src={Me} className="w-1/3 rounded-full mx-auto mt-10"></img>
-          <h1 className=" text-console-white text-center text-4xl mt-4 animate-profile-fade-in">Hi, I'm Bill Cui.</h1>
+          <div className="flex justify-center items-center space-x-6 mb-2">
+            <h1 className=" text-console-white text-center text-4xl mt-4 animate-profile-fade-in">Hi, I'm </h1>
+
+            <div className=" text-console-white text-center text-4xl mt-4 animate-profile-fade-in">
+              <Typewriter
+                options={{
+                  autoStart: true,
+                  loop: true
+                }}
+
+                onInit={(typewriter) => {
+                  typewriter.typeString('Bill Cui.')
+
+                    .pauseFor(500)
+                    .deleteAll()
+                    .typeString('a UWaterloo CS Student.')
+                    .pauseFor(500)
+                    .deleteAll()
+                    .typeString('a fullstack developer.')
+                    .pauseFor(500)
+                    .deleteAll()
+                    .typeString('a devops person.')
+                    .pauseFor(500)
+                    .deleteAll()
+                    .typeString('a Taylor Swift enthusiast.')
+                    .pauseFor(500)
+                    .deleteAll()
+                    .typeString('a runner.')
+                    .pauseFor(500)
+                    .deleteAll()
+                    .typeString('a chef.')
+                    .pauseFor(500)
+                    .deleteAll()
+
+                    .start();
+                }} />
+            </div>
+
+          </div>
+
+
+
+
         </div>
 
         <div className="flex justify-center mt-5 animate-profile-fade-in">
@@ -38,6 +81,7 @@ function App() {
         <div >
           <img src={Me} className="w-1/3 rounded-full mx-auto mt-10"></img>
           <h1 className=" text-console-white text-center text-4xl mt-4">Hi, I'm Bill Cui.</h1>
+
         </div>
 
         <div className="flex justify-center mt-5">
