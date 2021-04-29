@@ -1,24 +1,40 @@
-import Bereavements from "../components/Projects/Bereavement/Bereavement";
-import MathSocLib from "../components/Projects/MathSocLib/MathSocLib";
-import ToTheMoon from "../components/Projects/ToTheMoon/ToTheMoon";
 import { File } from "./directory";
+import Project from "../components/Project/Project"
+
+import MathSocLogo from '../assets/mathSocLogo.png';
+import MathSocArch from '../assets/mathSocLibArch.png'
 
 
 
 
 let mathsoclib: File = {
   name: "MathSocLibrary",
-  display: <MathSocLib></MathSocLib>
+  display: <Project 
+    title = "Mathsoc Textbook Library"
+    description = "A fullstack textbook library and point of sale system designed and made for the University of Waterloo's Mathematics Society"
+    usedTech = {["Angular", "Node.JS", "Express.JS", "MySQL", "Docker", "Linux"]}
+    logo = {MathSocLogo}
+    image = {MathSocArch}
+    projectLink = "https://library.mathsoc.uwaterloo.ca/"
+  ></Project>
 }
 
 let bereavement: File = {
   name: "BereavementDNN",
-  display: <Bereavements></Bereavements>
+  display: <Project 
+  title = "Bereavement DotNetNuke Module"
+  description = "A fullstack employment bereavement DotNetNuke CMS module for the Toronto District School Board"
+  usedTech = {["Angular", "ASP.NET", "DotNetNuke", "SQLServer"]}
+></Project>
 }
 
 let toTheMoon: File = {
   name: "ToTheMoon",
-  display: <ToTheMoon></ToTheMoon>
+  display: <Project 
+  title = "🚀 To the Moon 🚀"
+  description = "A stock market sentiment analysis tool, powered by DropBase and r/wallstreetbets"
+  usedTech = {["React", "Flask", "DropBase", "Docker", "AWS", "RedditAPI"]}
+></Project>
 }
 
 export {mathsoclib, bereavement, toTheMoon};

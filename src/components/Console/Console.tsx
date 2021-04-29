@@ -10,6 +10,9 @@ function Console() {
 
   let [userInput, setUserInput] = useState<String>();
 
+  const handleGoToRegularVersion = () => {
+    
+  }
 
   const initialScreen = [
     <ConsoleLine><div className="text-red-400">💻 Welcome to ✨Bill Cui’s Website✨ LTS (GNU/Linux 4.19.104-microsoft-standard x86_64) 💻</div></ConsoleLine>,
@@ -20,7 +23,14 @@ function Console() {
     <ConsoleLine className="mx-4 mt-5">System information as of <div className="text-green-400 inline">{new Date().toString()}</div></ConsoleLine>,
     <ConsoleLine className="mx-4"><div className="text-yellow-400 inline">Education Status: </div> University of Waterloo Computer Science 2B</ConsoleLine>,
     <ConsoleLine className="mt-5">This message is shown once a visit.</ConsoleLine>,
-    <ConsoleLine>Type <div className="text-green-400 inline">help</div> for list of navigation commands</ConsoleLine>
+    <ConsoleLine>Type <div className="text-green-400 inline">help</div> for list of navigation commands</ConsoleLine>,
+    // <ConsoleLine>
+    //   <div className="text-red-400 inline">Prefer the traditional portfolio style?</div>
+    //   <button className="bg-gray-400 rounded-full p-3 mx-2 hover:bg-red-400 hover:text-white cursor-pointer duration-300 ease-in-out text-base text-black " onClick={handleGoToRegularVersion}>Click here!</button>
+    // </ConsoleLine>
+
+
+
   ]
 
 
@@ -209,7 +219,7 @@ function Console() {
 
 
   return (
-    <div className="animate-profile-fade-in" >
+    <div className="animate-fade-in" >
       {screen}
       <ConsoleInput setUserInput={setUserInput} handlePressedEnter={handlePressedEnter} userInput={userInput} currDir={currDir.name} handlePressedTab={handlePressedTab} ></ConsoleInput>
     </div>
