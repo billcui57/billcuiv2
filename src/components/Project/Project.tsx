@@ -22,7 +22,7 @@ function Project({ logo, usedTech, gitHubRepo, projectLink, description, title, 
 
 
   return (
-    <div className="font-console text-center px-4 py-4">
+    <div className="font-console text-center px-4 mt-4">
 
       <ConsoleLine className="mb-2">
         <div className="flex justify-center items-center">
@@ -32,7 +32,7 @@ function Project({ logo, usedTech, gitHubRepo, projectLink, description, title, 
         </div>
       </ConsoleLine>
 
-      <ConsoleLine className="flex justify-center items-center space-x-4 mb-2">
+      <ConsoleLine className="flex flex-wrap justify-center items-center space-x-4 mb-2 ">
         {usedTech.map((tech) => <p className="p-1 text-yellow-400">{tech}</p>)}
       </ConsoleLine>
       <ConsoleLine className="mb-4 "><p>{description}</p></ConsoleLine>

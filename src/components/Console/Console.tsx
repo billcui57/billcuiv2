@@ -219,7 +219,7 @@ function Console() {
 
 
   return (
-    <div className="animate-fade-in" >
+    <div className="animate-fade-in-up" >
       {screen}
       <ConsoleInput setUserInput={setUserInput} handlePressedEnter={handlePressedEnter} userInput={userInput} currDir={currDir.name} handlePressedTab={handlePressedTab} ></ConsoleInput>
     </div>

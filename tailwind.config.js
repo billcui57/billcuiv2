@@ -20,7 +20,7 @@ module.exports = {
             },
         },
        
-        'fade-in': {
+        'fade-in-up': {
             '0%': {
                 opacity: '0',
                 transform: 'translateY(10px)'
@@ -30,9 +30,21 @@ module.exports = {
                 transform: 'translateY(0)'
             },
         },
+
+        'fade-in-stay': {
+          '0%': {
+              opacity: '0',
+
+          },
+          '100%': {
+              opacity: '1',
+
+          },
+      },
     },
     animation: {
-        'fade-in': 'fade-in 0.5s ease-out',
+        'fade-in-up': 'fade-in-up 1s ease-out',
+        'fade-in-stay': 'fade-in-stay 0.5s ease-out',
         'fade-out': 'fade-out 1s ease-in',
     }
     },
