@@ -3,10 +3,12 @@ import './Console.css';
 import ConsoleLine from '../../components/ConsoleLine/ConsoleLine'
 import ConsoleInput from '../../components/ConsoleInput/ConsoleInput';
 import { Directory, initializeDir, File } from '../../models/directory';
-
+import smoothscroll from 'smoothscroll-polyfill';
 
 
 function Console() {
+
+  smoothscroll.polyfill();
 
   let [userInput, setUserInput] = useState<String>();
 

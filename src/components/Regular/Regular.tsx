@@ -3,10 +3,13 @@ import Me from '../../assets/me.jpg'
 import Typewriter from 'typewriter-effect'
 import { bereavement, mathsoclib, toTheMoon } from '../../models/projects';
 import Project from '../Project/Project';
+import smoothscroll from 'smoothscroll-polyfill';
+
+
 
 
 function Regular({ goToConsole }: { goToConsole: any }) {
-
+  smoothscroll.polyfill();
 
   const [animationPhase, setAnimationPhase] = useState<String>("entering")
 
