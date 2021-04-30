@@ -71,7 +71,7 @@ function Regular({ goToConsole }: { goToConsole: any }) {
 
   const displayRest = () => {
     return (
-      <div className={`${animation}`} >
+      <div  >
 
        <div id="rest" className = "pb-16"></div>
         <button className="bg-gray-400 rounded-xl p-3 mx-2 hover:bg-gray-600 hover:text-console-white cursor-pointer duration-300 ease-in-out text-xl text-black "  onClick={handlePressedGoToConsoleButton}>Familiar with Linux? Click here</button>
