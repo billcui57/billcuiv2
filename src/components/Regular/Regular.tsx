@@ -87,12 +87,12 @@ function Regular({ goToConsole }: { goToConsole: any }) {
 
 
 
-        <h1 className="mt-8 text-base ">
+        <h1 className="mt-7 text-base ">
           I am a <h1 className="inline text-red-400">fullstack</h1> and <h1 className="inline text-red-400">devops developer</h1> who is always learning new things. 
           
           </h1>
 
-          <h1 className="mt-8 text-base  mb-24"> 
+          <h1 className="mt-4 text-base  mb-24"> 
           Currently, I am a third year <h1 className="inline text-green-400">Computer Science</h1> student at the <h1 className="inline text-yellow-400">University of Waterloo.</h1>
 
           </h1>
@@ -101,7 +101,7 @@ function Regular({ goToConsole }: { goToConsole: any }) {
           <h1 className="text-lg inline bg-gray-600 rounded-lg p-2">$ ls ~/projects</h1>
         </div>
 
-        <div className = "mb-24">
+        <div className = "mb-24 mt-5">
         {[mathsoclib,
           bereavement,
           toTheMoon].map((project) => project.display)}

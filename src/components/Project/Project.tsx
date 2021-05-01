@@ -22,9 +22,9 @@ function Project({ logo, usedTech, gitHubRepo, projectLink, description, title, 
 
 
   return (
-    <div className="font-console text-center px-4 mt-4">
+    <div className="font-console text-center px-4 mt-2">
 
-      <ConsoleLine className="mb-2">
+      <ConsoleLine className="">
         <div className="flex justify-center items-center">
           <img src={logo} className="w-10"></img>
           <h1 className="text-lg text-red-400 p-2 ">{title}</h1>
