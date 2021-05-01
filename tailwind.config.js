@@ -1,10 +1,19 @@
+const defaultTheme = require('tailwindcss/defaultTheme')
+
 module.exports = {
   purge: [],
   purge: ['./src/**/*.{js,jsx,ts,tsx}', './public/index.html'],
   darkMode: false, // or 'media' or 'class',
 
   theme: {
+    theme: {
+      screens: {
+        'xs': '475px',
+        ...defaultTheme.screens,
+      },
+    },
     extend: {
+      
       colors: {
         'console-white': "#BBBFC4"
       },

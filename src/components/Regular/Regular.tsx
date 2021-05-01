@@ -139,8 +139,8 @@ function Regular({ goToConsole }: { goToConsole: any }) {
   return (
     <div className={`${animation}  px-4 text-console-white font-console mx-auto text-center`} >
       <div className={``}>
-        <img src={Me} className={`w-1/3 rounded-full mx-auto mt-10 `}></img>
-        <div className="flex justify-center items-center mb-4 -space-x-3 text-4xl mt-4 ">
+        <img src={Me} className={` md:w-2/3 xs:w-2/3 sm:w-3/4 lg:w-1/3 rounded-full mx-auto mt-10 `}></img>
+        <div className="flex justify-center items-center mb-4 -space-x-3 text-2xl mt-4 ">
           <Typewriter
             options={{
               autoStart: true,
