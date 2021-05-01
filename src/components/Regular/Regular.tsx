@@ -76,46 +76,56 @@ function Regular({ goToConsole }: { goToConsole: any }) {
     return (
       <div  >
 
-       <div id="rest" className = "pb-16"></div>
-        <button className="bg-gray-400 rounded-xl p-3 mx-2 hover:bg-gray-600 hover:text-console-white cursor-pointer duration-300 ease-in-out text-xl text-black "  onClick={handlePressedGoToConsoleButton}>Familiar with Linux? Click here</button>
+       <div id="rest" className = "pb-16 "></div>
+        <button className="mb-16  cursor-pointer  text-base  underline hover:text-gray-400"  onClick={handlePressedGoToConsoleButton}>Familiar with Linux? Click here</button>
      
 
 
         <div className="mt-8">
-          <h1 className="text-xl inline bg-gray-600 rounded-lg p-2" >$ whoami</h1>
+          <h1 className="text-lg inline bg-gray-600 rounded-lg p-2" >$ whoami</h1>
         </div>
 
 
 
-        <h1 className="mt-8 text-xl mb-8">I am a third year <h1 className="inline text-green-400">Computer Science</h1> student at the <h1 className="inline text-yellow-400">University of Waterloo</h1></h1>
+        <h1 className="mt-8 text-base ">
+          I am a <h1 className="inline text-red-400">fullstack</h1> and <h1 className="inline text-red-400">devops developer</h1> who is always learning new things. 
+          
+          </h1>
+
+          <h1 className="mt-8 text-base  mb-24"> 
+          Currently, I am a third year <h1 className="inline text-green-400">Computer Science</h1> student at the <h1 className="inline text-yellow-400">University of Waterloo.</h1>
+
+          </h1>
 
         <div className="mt-8">
-          <h1 className="text-xl inline bg-gray-600 rounded-lg p-2">$ ls ~/projects</h1>
+          <h1 className="text-lg inline bg-gray-600 rounded-lg p-2">$ ls ~/projects</h1>
         </div>
 
-
+        <div className = "mb-24">
         {[mathsoclib,
           bereavement,
           toTheMoon].map((project) => project.display)}
+        </div>
+        
 
         <div className="mt-8">
-          <h1 className="text-xl inline bg-gray-600 rounded-lg p-2 ">$ cat ~/.work_history</h1>
+          <h1 className="text-lg inline bg-gray-600 rounded-lg p-2 ">$ cat ~/.work_history</h1>
         </div>
 
 
-        <h1 className="text-xl text-red-400 mt-8 ">WIP</h1>
+        <h1 className="text-lg text-red-400 mt-8 ">WIP</h1>
 
         <div className="mt-8">
-          <h1 className="text-xl inline bg-gray-600 rounded-lg p-2 ">$ ls ~/hackathons</h1>
+          <h1 className="text-lg inline bg-gray-600 rounded-lg p-2 ">$ ls ~/hackathons</h1>
         </div>
 
-        <h1 className="text-xl text-red-400 mt-8 ">WIP</h1>
+        <h1 className="text-lg text-red-400 mt-8 ">WIP</h1>
 
         <div className="mt-8">
-          <h1 className="text-xl inline bg-gray-600 rounded-lg p-2 ">$ vim ~/.contact_me</h1>
+          <h1 className="text-lg inline bg-gray-600 rounded-lg p-2 ">$ vim ~/.contact_me</h1>
         </div>
 
-        <h1 className="text-xl text-red-400 mt-8 ">WIP</h1>
+        <h1 className="text-lg text-red-400 mt-8 ">WIP</h1>
 
 
       </div>

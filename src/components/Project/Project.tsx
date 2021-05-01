@@ -26,9 +26,9 @@ function Project({ logo, usedTech, gitHubRepo, projectLink, description, title, 
 
       <ConsoleLine className="mb-2">
         <div className="flex justify-center items-center">
-          <img src={logo} className="w-16"></img>
-          <h1 className="text-4xl text-red-400 p-2 ">{title}</h1>
-          <img src={logo} className="w-16"></img>
+          <img src={logo} className="w-10"></img>
+          <h1 className="text-lg text-red-400 p-2 ">{title}</h1>
+          <img src={logo} className="w-10"></img>
         </div>
       </ConsoleLine>
 
@@ -38,8 +38,8 @@ function Project({ logo, usedTech, gitHubRepo, projectLink, description, title, 
       <ConsoleLine className="mb-4 "><p>{description}</p></ConsoleLine>
 
       {projectLink ?
-        <ConsoleLine className="flex justify-center items-center space-x-4 mb-4">
-          <button className="bg-gray-400 rounded-full p-2 mx-2 hover:bg-pink-600 hover:text-white cursor-pointer duration-300 text-black text-base"><a href={projectLink}>Check it out</a></button>
+        <ConsoleLine className="flex justify-center items-center space-x-4 mb-6">
+          <button className="cursor-pointer  text-base  underline hover:text-gray-400"><a href={projectLink}>Check it out</a></button>
         </ConsoleLine>
         : undefined}
 

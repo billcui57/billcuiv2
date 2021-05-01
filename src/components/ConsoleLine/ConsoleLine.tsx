@@ -10,7 +10,7 @@ interface ConsoleLineProps {
 
 function ConsoleLine({ children, className }: ConsoleLineProps) {
   return (
-    <div className={`px-1 py-0.5 text-2xl text-console-white ${className}`}>
+    <div className={`px-1 py-0.5 text-base text-console-white ${className}`}>
 
       {children}
 
